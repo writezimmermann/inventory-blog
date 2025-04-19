@@ -1,19 +1,20 @@
-import type { Metadata } from 'next'
 import './globals.css'
+import { getPosts } from '@/lib/posts'
+import Home from './page'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Inventory - Michael Zimmermann',
   description: 'Personal blog by Michael Zimmermann',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function RootLayout() {
+  const posts = await getPosts()
+
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Home posts={posts} />
+      </body>
     </html>
   )
 } 

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import styles from './ArticlePanel.module.css';
 
@@ -6,9 +8,10 @@ interface ArticlePanelProps {
   onClose: () => void;
   title: string;
   date: string;
+  content: string;
 }
 
-export default function ArticlePanel({ isOpen, onClose, title, date }: ArticlePanelProps) {
+export default function ArticlePanel({ isOpen, onClose, title, date, content }: ArticlePanelProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -33,20 +36,10 @@ export default function ArticlePanel({ isOpen, onClose, title, date }: ArticlePa
             <h1 className={styles.title}>{title}</h1>
           </div>
           
-          <div className={styles.body}>
-            <p>Then it struck me: the flair of filing was still here in Records Management—but it was in the implied aesthetic nature of the filing enterprise; in the alignment of tabs and arrangement of drawers. That pizzazz was to be found, too, in the style of the book itself—in its liberal use of diagrams and illustrations and photographs of state-of-the-art office equipment and fashionably dressed, well-coiffed office ladies.</p>
-            
-            <div className={styles.imageContainer}>
-              <img 
-                src="https://placehold.co/600x400" 
-                alt="Placeholder" 
-                className={styles.image}
-              />
-              <span className={styles.caption}>This is an image caption</span>
-            </div>
-
-            <p>I figured, why not read Records Management against the grain, focusing less on the staid instruction and more on the aesthetic and even ludic nature of filing work? Why not read this textbook as a toy catalogue, or as a set of rules for a Monopoly-esque administrative game?</p>
-          </div>
+          <div 
+            className={styles.body}
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </article>
       </div>
     </div>

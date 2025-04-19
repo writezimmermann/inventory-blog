@@ -24,7 +24,7 @@
   width: 100%;
   background: white;
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 1rem;
@@ -49,11 +49,6 @@
   align-items: center;
   justify-content: center;
   color: #666;
-  transition: color 0.2s ease;
-}
-
-.closeButton:hover {
-  color: #000;
 }
 
 .content {

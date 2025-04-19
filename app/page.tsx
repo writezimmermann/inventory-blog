@@ -1,25 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './page.module.css'
+import styles from './page.module.css';
+import { type Post } from '@/lib/posts';
 import ArticlePanel from './components/ArticlePanel';
 
-const posts = [
-  { id: 1, title: 'This is the title of the blog post', date: '17.04' },
-  { id: 2, title: 'This is the title of the blog post', date: '17.04' },
-  { id: 3, title: 'This is the title of the blog post', date: '17.04' },
-  // Add more posts as needed
-]
+interface HomeProps {
+  posts: Post[];
+}
 
-export default function Home() {
-  const [selectedPost, setSelectedPost] = useState<typeof posts[0] | null>(null);
+export default function Home({ posts }: HomeProps) {
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
   return (
     <main>
       <div className={styles.posts}>
-        {posts.map(post => (
+        {posts.map((post, index) => (
           <article 
-            key={post.id} 
+            key={index} 
             className={styles.post}
             onClick={() => setSelectedPost(post)}
           >
@@ -28,7 +26,7 @@ export default function Home() {
           </article>
         ))}
       </div>
-      
+
       <footer className={styles.footer}>
         <div className={styles.left}>
           <div className={styles.inventory}>inventory</div>
@@ -46,7 +44,8 @@ export default function Home() {
         onClose={() => setSelectedPost(null)}
         title={selectedPost?.title || ''}
         date={selectedPost?.date || ''}
+        content={selectedPost?.content || ''}
       />
     </main>
-  )
+  );
 } 
