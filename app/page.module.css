@@ -1,0 +1,48 @@
+.posts {
+  padding-bottom: 120px; /* Space for footer */
+}
+
+.post {
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.date {
+  font-size: 0.875rem;
+  color: #666;
+  margin-right: 0.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: normal;
+  display: inline;
+}
+
+.footer {
+  position: fixed;
+  bottom: 50px;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.inventory {
+  font-size: 1rem;
+}
+
+.name {
+  font-size: 1rem;
+}
+
+.right {
+  font-size: 1rem;
+} 
