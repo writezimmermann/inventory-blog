@@ -1,11 +1,12 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import { ReactNode } from 'react'
 
 export interface Post {
   title: string
   date: string
-  content: string
+  content: ReactNode
 }
 
 export interface PostMetadata {
@@ -26,7 +27,12 @@ export async function getPosts(): Promise<Post[]> {
         
         const { content, frontmatter } = await compileMDX<PostMetadata>({
           source,
-          options: { parseFrontmatter: true }
+          options: { 
+            parseFrontmatter: true,
+            mdxOptions: {
+              development: process.env.NODE_ENV === 'development'
+            }
+          }
         })
 
         return {
@@ -35,7 +41,7 @@ export async function getPosts(): Promise<Post[]> {
             day: '2-digit',
             month: '2-digit'
           }).replace('/', '.'),
-          content: content
+          content
         }
       })
   )

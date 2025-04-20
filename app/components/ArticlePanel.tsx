@@ -2,13 +2,14 @@
 
 import { useEffect } from 'react';
 import styles from './ArticlePanel.module.css';
+import { ReactNode } from 'react';
 
 interface ArticlePanelProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   date: string;
-  content: string;
+  content: ReactNode;
 }
 
 export default function ArticlePanel({ isOpen, onClose, title, date, content }: ArticlePanelProps) {
@@ -36,10 +37,9 @@ export default function ArticlePanel({ isOpen, onClose, title, date, content }: 
             <h1 className={styles.title}>{title}</h1>
           </div>
           
-          <div 
-            className={styles.body}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          <div className={styles.body}>
+            {content}
+          </div>
         </article>
       </div>
     </div>
