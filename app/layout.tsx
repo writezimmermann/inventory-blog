@@ -1,5 +1,4 @@
 import './globals.css'
-import { getPosts } from '@/lib/posts'
 import Home from './page'
 
 export const metadata = {
@@ -7,13 +6,11 @@ export const metadata = {
   description: 'Personal blog by Michael Zimmermann',
 }
 
-export default async function RootLayout() {
-  const posts = await getPosts()
-
+export default function RootLayout() {
   return (
     <html lang="en">
       <body>
-        <Home posts={posts} />
+        <Home />
       </body>
     </html>
   )
