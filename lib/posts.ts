@@ -37,10 +37,7 @@ export async function getPosts(): Promise<Post[]> {
 
         return {
           title: frontmatter.title,
-          date: new Date(frontmatter.date).toLocaleDateString('en-US', {
-            day: '2-digit',
-            month: '2-digit'
-          }).replace('/', '.'),
+          date: frontmatter.date,
           content
         }
       })
