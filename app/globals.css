@@ -24,9 +24,15 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
-a {
-  color: var(--primary-color);
+html body a {
+  color: #8a0f6b !important;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+html body a:hover {
+  color: #AF1386 !important; /* Using your primary color for hover */
+  text-decoration: underline;
 }
 
 main {

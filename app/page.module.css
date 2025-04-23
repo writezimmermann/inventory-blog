@@ -17,6 +17,13 @@
   font-size: 1rem;
   font-weight: normal;
   display: inline;
+  color: #8a0f6b;
+  transition: color 0.2s ease;
+}
+
+.title:hover {
+  color: #AF1386;
+  text-decoration: underline;
 }
 
 .footer {
